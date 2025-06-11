@@ -33,6 +33,7 @@ NetBSD, OpenBSD and DragonFlyBSD:
 - Gentoo Linux
 - MarinerOS
 - MIRACLE LINUX
+- Navix
 - NetBSD
 - OpenBSD
 - openEuler

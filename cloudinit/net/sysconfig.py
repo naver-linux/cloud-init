@@ -27,6 +27,7 @@ KNOWN_DISTROS = [
     "eurolinux",
     "fedora",
     "miraclelinux",
+    "navix",
     "openeuler",
     "OpenCloudOS",
     "openmandriva",

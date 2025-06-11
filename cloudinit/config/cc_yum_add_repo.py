@@ -27,6 +27,7 @@ meta: MetaSchema = {
         "eurolinux",
         "fedora",
         "mariner",
+        "navix",
         "openeuler",
         "OpenCloudOS",
         "openmandriva",

@@ -79,6 +79,7 @@ OSFAMILIES = {
         "fedora",
         "mariner",
         "miraclelinux",
+        "navix",
         "openmandriva",
         "photon",
         "rhel",

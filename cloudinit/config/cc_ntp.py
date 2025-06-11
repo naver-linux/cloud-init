@@ -36,6 +36,7 @@ distros = [
     "freebsd",
     "mariner",
     "miraclelinux",
+    "navix",
     "openbsd",
     "openeuler",
     "OpenCloudOS",
@@ -247,7 +248,7 @@ DISTRO_CLIENT_CONFIG: Dict[str, Dict] = {
 for distro in ("opensuse-microos", "opensuse-tumbleweed", "opensuse-leap"):
     DISTRO_CLIENT_CONFIG[distro] = DISTRO_CLIENT_CONFIG["opensuse"]
 
-for distro in ("almalinux", "cloudlinux", "rocky"):
+for distro in ("almalinux", "cloudlinux", "navix", "rocky"):
     DISTRO_CLIENT_CONFIG[distro] = DISTRO_CLIENT_CONFIG["rhel"]
 
 for distro in ("sle_hpc", "sle-micro"):

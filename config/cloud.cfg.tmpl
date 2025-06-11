@@ -3,7 +3,7 @@
 # and base configuration.
 {% set is_bsd = variant in ["dragonfly", "freebsd", "netbsd", "openbsd"] %}
 {% set is_rhel = variant in ["almalinux", "centos", "cloudlinux", "eurolinux",
-                             "miraclelinux", "rhel", "rocky", "virtuozzo"] %}
+                             "miraclelinux", "navix", "rhel", "rocky", "virtuozzo"] %}
 {% set gecos = ({"amazon": "EC2 Default User", "azurelinux": "Azure Linux",
                  "centos": "Cloud User", "debian": "Debian",
                  "dragonfly": "DragonFly", "freebsd": "FreeBSD",

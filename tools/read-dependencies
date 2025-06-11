@@ -26,6 +26,7 @@ DISTRO_PKG_TYPE_MAP = {
     "centos": "redhat",
     "eurolinux": "redhat",
     "miraclelinux": "redhat",
+    "navix": "redhat",
     "fedora": "redhat",
     "rocky": "redhat",
     "redhat": "redhat",
@@ -360,7 +361,7 @@ def pkg_install(pkg_list, distro, test_distro=False, dry_run=False):
         cmd = DISTRO_INSTALL_PKG_CMD[distro_family]
     install_cmd.extend(cmd)
 
-    if distro in ["centos", "redhat", "rocky", "eurolinux"]:
+    if distro in ["centos", "redhat", "rocky", "eurolinux", "navix"]:
         # CentOS and Redhat need epel-release to access oauthlib and jsonschema
         subprocess.check_call(install_cmd + ["epel-release"])
         subprocess.check_call(
@@ -379,6 +380,7 @@ def pkg_install(pkg_list, distro, test_distro=False, dry_run=False):
         "rocky",
         "centos",
         "eurolinux",
+        "navix",
     ]:
         pkg_list.append("rpm-build")
     subprocess.check_call(install_cmd + pkg_list)

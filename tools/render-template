@@ -28,6 +28,7 @@ def main():
         "gentoo",
         "mariner",
         "miraclelinux",
+        "navix",
         "netbsd",
         "openbsd",
         "openeuler",

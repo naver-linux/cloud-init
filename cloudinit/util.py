@@ -623,6 +623,7 @@ def _get_variant(info):
             "fedora",
             "mariner",
             "miraclelinux",
+            "navix",
             "openeuler",
             "opencloudos",
             "openmandriva",

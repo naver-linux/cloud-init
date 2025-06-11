@@ -218,6 +218,26 @@ OS_RELEASE_MIRACLELINUX_8 = dedent(
 """
 )
 
+OS_RELEASE_NAVIX_9 = dedent(
+    """\
+    NAME="Navix"
+    VERSION="9.5 (Jeongja)"
+    ID="navix"
+    ID_LIKE="rhel centos fedora"
+    VERSION_ID="9.5"
+    PLATFORM_ID="platform:el9"
+    PRETTY_NAME="Navix 9.5 (Jeongja)"
+    ANSI_COLOR="0;36"
+    CPE_NAME="cpe:/o:navix:navix:9::baseos"
+    HOME_URL="https://navix.navercorp.com/"
+    BUG_REPORT_URL="https://github.com/NaverCloudPlatform/Navix"
+    NAVIX_SUPPORT_PRODUCT="Navix-9"
+    NAVIX_SUPPORT_PRODUCT_VERSION="9.5"
+    REDHAT_SUPPORT_PRODUCT="Navix"
+    REDHAT_SUPPORT_PRODUCT_VERSION="9.5"
+"""
+)
+
 OS_RELEASE_ROCKY_8 = dedent(
     """\
     NAME="Rocky Linux"
@@ -319,6 +339,7 @@ REDHAT_RELEASE_ALMALINUX_8 = "AlmaLinux release 8.3 (Purple Manul)"
 REDHAT_RELEASE_EUROLINUX_7 = "EuroLinux release 7.9 (Minsk)"
 REDHAT_RELEASE_EUROLINUX_8 = "EuroLinux release 8.4 (Vaduz)"
 REDHAT_RELEASE_MIRACLELINUX_8 = "MIRACLE LINUX release 8.4 (Peony)"
+REDHAT_RELEASE_NAVIX_9 = "Navix release 9.5 (Jeongja)"
 REDHAT_RELEASE_ROCKY_8 = "Rocky Linux release 8.3 (Green Obsidian)"
 REDHAT_RELEASE_VIRTUOZZO_8 = "Virtuozzo Linux release 8"
 REDHAT_RELEASE_CLOUDLINUX_8 = "CloudLinux release 8.4 (Valery Rozhdestvensky)"
@@ -1160,6 +1181,26 @@ class TestGetLinuxDistro(CiTestCase):
         self.assertEqual(("miraclelinux", "8", "Peony"), dist)
 
     @mock.patch(M_PATH + "load_text_file")
+    def test_get_linux_navix9_rhrelease(
+        self, m_os_release, m_path_exists
+    ):
+        """Verify navix 9 read from redhat-release."""
+        m_os_release.return_value = REDHAT_RELEASE_NAVIX_8
+        m_path_exists.side_effect = TestGetLinuxDistro.redhat_release_exists
+        dist = util.get_linux_distro()
+        self.assertEqual(("navix", "9.5", "Jeongja"), dist)
+
+    @mock.patch(M_PATH + "load_text_file")
+    def test_get_linux_navix9_osrelease(
+        self, m_os_release, m_path_exists
+    ):
+        """Verify navix 9 read from os-release."""
+        m_os_release.return_value = OS_RELEASE_NAVIX_9
+        m_path_exists.side_effect = TestGetLinuxDistro.os_release_exists
+        dist = util.get_linux_distro()
+        self.assertEqual(("navix", "9.5", "Jeongja"), dist)
+
+    @mock.patch(M_PATH + "load_text_file")
     def test_get_linux_rocky8_rhrelease(self, m_os_release, m_path_exists):
         """Verify rocky linux 8 read from redhat-release."""
         m_os_release.return_value = REDHAT_RELEASE_ROCKY_8
@@ -1365,6 +1406,7 @@ class TestGetVariant:
             ({"system": "linux", "dist": ("eurolinux",)}, "eurolinux"),
             ({"system": "linux", "dist": ("fedora",)}, "fedora"),
             ({"system": "linux", "dist": ("mariner",)}, "mariner"),
+            ({"system": "linux", "dist": ("navix",)}, "navix"),
             ({"system": "linux", "dist": ("openEuler",)}, "openeuler"),
             ({"system": "linux", "dist": ("OpenCloudOS",)}, "opencloudos"),
             ({"system": "linux", "dist": ("photon",)}, "photon"),
